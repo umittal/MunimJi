@@ -1,0 +1,21 @@
+all tables will have following fields
+
+ID, starttime, endtime
+
+endtime can be null and for all null enditime ID must be unique. This id is not autoincrement id. we are not using autoincrement id.
+
+tables are
+
+events, eventtypes
+
+in event, we have a external key reference for eventtype and a text field
+
+eventtype has ID, description
+
+for example, 
+
+ID 1 - Free Form Text
+ID 2 - Equity Trade
+ID 3 - Bond Trade
+
+
