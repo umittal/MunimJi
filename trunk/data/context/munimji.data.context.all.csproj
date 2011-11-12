@@ -60,9 +60,9 @@
       <Project>{8633186A-44EF-4EF3-B251-320ECAF40A21}</Project>
       <Name>munimji.core.lib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\core\persistance\munimji.core.persistance.csproj">
+    <ProjectReference Include="..\..\core\persistance\munimji.core.persistance.all.csproj">
       <Project>{09C414DF-6A58-4C54-A011-1C31E879EB1F}</Project>
-      <Name>munimji.core.persistance</Name>
+      <Name>munimji.core.persistance.all</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\packages\src\envers\NHibernate.Envers.csproj">
       <Project>{16492F52-0C2E-4847-9CBF-696907808FD6}</Project>
