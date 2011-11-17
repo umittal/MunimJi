@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Demo - Using WCF with Dojo</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.5/dojo/dojo.xd.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        var request = function () {
+            var invoiceId = dojo.byId("txtInvoiceId").value;
+            var params = {
+                url: "http://ADD_HOSTNAME_HERE:8000/MunimJiServices/InvoiceService/GetInvoice",
+                data: dojo.toJson({ "id": invoiceId }),
+                type: "POST",
+                processData: false,
+                contentType: 'application/json',
+                dataType: 'text',
+                timeout: 10000,
+                success: function (res) {
+                    if (!callback) return;
+
+                    // *** Use json library so we can fix up MS AJAX dates
+                    var result = JSON2.parse(res);
+
+                    // *** Bare message IS result
+                    if (bare)
+                    { callback(result); return; }
+
+                    // *** Wrapped message contains top level object node
+                    // *** strip it off
+                    for (var property in result) {
+                        callback(result[property]);
+                        break;
+                    }
+                },
+                error: function (xhr) {
+                    if (!error) return;
+                    if (xhr.responseText) {
+                        var err = JSON2.parse(xhr.responseText);
+                        if (err)
+                            error(err);
+                        else
+                            error({ Message: "Unknown server error." })
+                    }
+                    return;
+                }
+            };
+            console.log(params);
+            $.ajax(params);
+        };
+
+        dojo.ready(function () {
+            dojo.connect(dojo.byId("btnGo"), "onclick", request);
+        });
+    </script>
+</head>
+<body>
+    <span>Invoice Id:</span>
+    <input id="txtInvoiceId" type="text" />
+    <input id="btnGo" type="button" value="Go" />
+    <div id="codeConsole" />
+</body>
+</html>

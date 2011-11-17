@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Demo - Using WCF with Dojo</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.5/dojo/dojo.xd.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        var request = function () {
+            var invoiceId = dojo.byId("txtInvoiceId").value;
+            var params = {
+                url: "http://ADD_HOSTNAME_HERE:8000/MunimJiServices/InvoiceService/GetInvoice",
+                handleAs: "json",
+                contentType: 'application/json',
+                postData: dojo.toJson({ "id": invoiceId }),
+                load: function (result) {
+                    console.log("From WCF: ", result);
+                    dojo.byId("codeConsole").innerHTML = '<h3>Json Response:</h3>'
+							+ '<pre>'
+							+ dojo.toJson(result, true)
+							+ '</pre>'
+                            + '<h3>This prooves I am still young!</h3>';
+                },
+                error: function (err) {
+                    console.warn(err);
+                }
+            };
+            console.log(params);
+            dojo.xhrPost(params);
+        };
+
+        dojo.ready(function () {
+            dojo.connect(dojo.byId("btnGo"), "onclick", request);
+        });
+    </script>
+</head>
+<body>
+    <span>Invoice Id:</span>
+    <input id="txtInvoiceId" type="text" />
+    <input id="btnGo" type="button" value="Go" />
+    <div id="codeConsole" />
+</body>
+</html>

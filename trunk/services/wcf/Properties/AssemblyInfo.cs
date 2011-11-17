@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("munimji.core.intrumentation")]
+[assembly: AssemblyTitle("wcf")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("munimji.core.intrumentation")]
+[assembly: AssemblyProduct("wcf")]
 [assembly: AssemblyCopyright("Copyright ©  2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("3452b61e-8048-44dc-805f-392e9e4359f8")]
+[assembly: Guid("49085d54-f744-49e8-b853-56e8fd6e957a")]
 
 // Version information for an assembly consists of the following four values:
 //

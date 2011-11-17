@@ -2,21 +2,18 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{72EF302A-7BE5-4DCE-B10A-F0A41EC75F73}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{CB531C09-AC02-433C-8781-BDF28EDACE01}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>munimji.apps.sandbag</RootNamespace>
-    <AssemblyName>munimji.apps.sandbag</AssemblyName>
+    <RootNamespace>munimji.core.components</RootNamespace>
+    <AssemblyName>munimji.core.components</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,8 +22,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -37,34 +33,46 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="entrypoint\EntryPointBase.cs" />
+    <Compile Include="entrypoint\ExeEntryPoint.cs" />
+    <Compile Include="hosts\ServiceResolver.cs" />
+    <Compile Include="hosts\ServiceTypes.cs" />
+    <Compile Include="hosts\WcfServiceHost.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="entrypoint\WindowsServiceEntryPoint.cs" />
+    <Compile Include="hosts\WorkerServiceHost.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="hosts\ServicesHostBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="EntityFramework.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\core\persistance\munimji.core.persistance.all.csproj">
-      <Project>{09C414DF-6A58-4C54-A011-1C31E879EB1F}</Project>
-      <Name>munimji.core.persistance.all</Name>
+    <ProjectReference Include="..\instrumentation\munimji.core.intrumentation.csproj">
+      <Project>{8604DC16-D457-4552-B52E-CE253A8C805E}</Project>
+      <Name>munimji.core.intrumentation</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\data\context\munimji.data.context.all.csproj">
-      <Project>{D7BAB719-C13F-4AF6-B684-E04236CF3F82}</Project>
-      <Name>munimji.data.context.all</Name>
+    <ProjectReference Include="..\lib\munimji.core.lib.csproj">
+      <Project>{8633186A-44EF-4EF3-B251-320ECAF40A21}</Project>
+      <Name>munimji.core.lib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\data\model\munimji.data.model.csproj">
-      <Project>{2DF43E1F-5C8E-43D4-8148-3BD12FCFF725}</Project>
-      <Name>munimji.data.model</Name>
+    <ProjectReference Include="..\worker\munimji.core.worker.csproj">
+      <Project>{63550433-16A8-482D-A6A0-23718B2F37D4}</Project>
+      <Name>munimji.core.worker</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

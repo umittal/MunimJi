@@ -40,7 +40,7 @@ namespace munimji.core.persistance {
                                                                                        y.MemberInfo.IsDefined(
                                                                                            typeof (IgnoreAttribute),
                                                                                            false))))
-                                         .ExportTo(@"C:\Projects\wvc_nh\apps\sandbag\bin\Debug\mappings"));
+                                         .ExportTo(@"\mappings"));
 
             enversConfig.AutoMapAssemblyOf<EntityBase>();
 
