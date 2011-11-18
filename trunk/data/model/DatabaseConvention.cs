@@ -3,7 +3,7 @@
 namespace munimji.data.model {
     public sealed class DatabaseConvention : IDatabaseConvention {
         public string Catalog {
-            get { return "worldviewdata"; }
+            get { return "munimjidb"; }
         }
 
         public string Schema {

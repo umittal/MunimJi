@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.IO;
 using System.Reflection;
 using FluentNHibernate.Automapping;
 using FluentNHibernate.Cfg;
@@ -33,6 +34,7 @@ namespace munimji.core.persistance {
 #if false
             pocoConfig = AttachePocoEvents(pocoConfig);
 #endif
+            var dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             pocoConfig.Mappings(m => m.AutoMappings
                                          .Add(AutoMap.AssemblyOf<EntityBase>(new AutomappingConfiguration())
                                                   .Conventions.AddFromAssemblyOf<ColumnNameConvention>()
@@ -40,7 +42,7 @@ namespace munimji.core.persistance {
                                                                                        y.MemberInfo.IsDefined(
                                                                                            typeof (IgnoreAttribute),
                                                                                            false))))
-                                         .ExportTo(@"\mappings"));
+                                         .ExportTo(dir + "\\mappings"));
 
             enversConfig.AutoMapAssemblyOf<EntityBase>();
 

@@ -72,6 +72,18 @@
       <Project>{CB531C09-AC02-433C-8781-BDF28EDACE01}</Project>
       <Name>munimji.core.components</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\core\persistance\munimji.core.persistance.csproj">
+      <Project>{09C414DF-6A58-4C54-A011-1C31E879EB1F}</Project>
+      <Name>munimji.core.persistance</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\data\model\munimji.data.model.csproj">
+      <Project>{2DF43E1F-5C8E-43D4-8148-3BD12FCFF725}</Project>
+      <Name>munimji.data.model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\services\wcf\munimji.services.wcf.csproj">
+      <Project>{E019DF7F-EBD8-42A4-81B1-6F7450FF686B}</Project>
+      <Name>munimji.services.wcf</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

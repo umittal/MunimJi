@@ -51,7 +51,7 @@ namespace munimji.apps.sandbag {
                                                  };
 
             var entity1 = new Investor {
-                                           LongName = "World View Capital",
+                                           LongName = "Some Capital",
                                            LegalJurisdiction = country1
                                        };
 

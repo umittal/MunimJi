@@ -17,7 +17,7 @@ namespace munimji.services.wcf.entities.events {
             using (var db = ContextService.GetContext<MunimJiContext>())
             {
                 var query = from invoice in db.Invoices where invoice.Id == id select invoice;
-                if(query.IsEmpty())
+                if(!query.IsEmpty())
                 {
                     dto = InvoiceDto.Create(query.First());
                 }
