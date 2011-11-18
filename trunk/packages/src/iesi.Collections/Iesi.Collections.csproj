@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="NamespaceSummary.xml" />
+    <Content Include="Readme.txt" />
     <None Include="Iesi.Collections.nuspec.template">
       <SubType>Designer</SubType>
     </None>
